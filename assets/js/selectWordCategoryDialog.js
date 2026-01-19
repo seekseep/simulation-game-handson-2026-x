@@ -1,20 +1,20 @@
 const dialog = document.getElementById('selectWordCategoryDialog')
 const categoryList = document.getElementById('selectWordCategoryList')
 
-export async function open (categories) {
+export async function open (wordCategories) {
   dialog.showModal()
 
   categoryList.innerHTML = '';
 
   return new Promise((resolve) => {
-    categories.forEach((category) => {
+    wordCategories.forEach((wordCategory) => {
       const button = document.createElement('button')
-      button.value = category;
-      button.textContent = category;
+      button.value = wordCategory.id;
+      button.textContent = wordCategory.name;
 
       button.addEventListener('click', () => {
         dialog.close()
-        resolve(button.value)
+        resolve(wordCategory)
       })
 
       categoryList.appendChild(button)
